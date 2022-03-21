@@ -21,7 +21,7 @@ class Labyrinthe{
 
 
 
-    char getChar(int x, int y) { // balguy
+    char getChar(int x, int y) { // rionde
         throw new Error("TODO");
     }
 
