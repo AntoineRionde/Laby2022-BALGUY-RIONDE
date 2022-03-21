@@ -1,5 +1,5 @@
 package src;
-
+import java.io.*;
 /**
  * Squelette de classe labyrinthe
  */
@@ -20,12 +20,6 @@ class Labyrinthe{
     private Sortie sortie;
 
 
-
-<<<<<<< HEAD
-    char getChar(int x, int y) { // balguy
-        char res;
-        switch()
-=======
     char getChar(int x, int y) { // rionde
         char resp = ' ';
         if (x == personnage.getX() && y == personnage.getY())
@@ -49,17 +43,35 @@ class Labyrinthe{
     }
 
 
-    static int[] getSuivant(int x, int y, String action) { // balguy
+    static int[] getSuivant(int x, int y, String action)throws ActionInconnueException { // balguy
         int[]res;
         switch(action){
           case haut:
-            
+            res[x-1,y];
+            break;
+
+          case bas :
+            res[x+1,y];
+            break;
+
+          case gauche :
+            res[x,y-1];
+            break;
+
+          case droite :
+            res[x,y+1];
+            break;
+
+          default:
+            throw new ActionInconnueException("le mot :"+action +" ne fait pas partie des 4 actions connues.");
+            break;
         }
+        return res;
     }
 
 
     void deplacerPerso(String action) throws ActionInconnueException { // balguy
-        throw new Error("TODO");
+        
     }
 
 
