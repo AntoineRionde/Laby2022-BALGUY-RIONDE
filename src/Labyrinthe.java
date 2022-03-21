@@ -1,6 +1,6 @@
 package src;
 
-/** 
+/**
  * Squelette de classe labyrinthe
  */
 class Labyrinthe{
@@ -27,7 +27,11 @@ class Labyrinthe{
 
 
     static int[] getSuivant(int x, int y, String action) { // balguy
-        throw new Error("TODO");
+        int[]res;
+        switch(action){
+          case haut:
+            
+        }
     }
 
 
