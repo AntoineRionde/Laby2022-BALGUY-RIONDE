@@ -15,6 +15,10 @@ class Labyrinthe{
     private final static String gauche = "GAUCHE";
     private final static String droite = "DROITE";
 
+    private boolean[][] murs;
+    private Personnage personnage;
+    private Sortie sortie;
+
 
 
     char getChar(int x, int y) { // balguy
