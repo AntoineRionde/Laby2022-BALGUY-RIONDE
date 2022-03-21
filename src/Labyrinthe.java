@@ -22,7 +22,24 @@ class Labyrinthe{
 
 
     char getChar(int x, int y) { // rionde
-        throw new Error("TODO");
+        char resp = ' ';
+        if (x == personnage.getX() && y == personnage.getY())
+        {
+            resp = PJ;
+        }
+        else if (x == sortie.getX() && y == sortie.getY())
+        {
+            resp = SORTIE;
+        }
+        else if (murs[x][y])
+        {
+            resp = MUR;
+        }
+        else if (!murs[x][y])
+        {
+            resp = VIDE;
+        }
+        return resp;
     }
 
 
@@ -42,7 +59,16 @@ class Labyrinthe{
 
 
     public boolean etreFini() { // rionde
-        throw new Error("TODO");
+        boolean estFini;
+        if (personnage.getX() == sortie.getX() && personnage.getY() == sortie.getY())
+        {
+            estFini = true;
+        }
+        else
+        {
+            estFini = false;
+        }
+        return estFini;
     }
 
     public static Labyrinthe chargerLabyrinthe(String nom) { // rionde
