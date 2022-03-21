@@ -1,3 +1,5 @@
+package src;
+
 /** 
  * Squelette de classe labyrinthe
  */
