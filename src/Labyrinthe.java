@@ -17,31 +17,31 @@ class Labyrinthe{
 
 
 
-    char getChar(int x, int y) {
+    char getChar(int x, int y) { // balguy
         throw new Error("TODO");
     }
 
 
-    static int[] getSuivant(int x, int y, String action) {
+    static int[] getSuivant(int x, int y, String action) { // balguy
         throw new Error("TODO");
     }
 
 
-    void deplacerPerso(String action) throws ActionInconnueException {
+    void deplacerPerso(String action) throws ActionInconnueException { // balguy
         throw new Error("TODO");
     }
 
 
-    public String toString() {
+    public String toString() { // rionde
         throw new Error("TODO");
     }
 
 
-    public boolean etreFini() {
+    public boolean etreFini() { // rionde
         throw new Error("TODO");
     }
 
-    public static Labyrinthe chargerLabyrinthe(String nom) {
+    public static Labyrinthe chargerLabyrinthe(String nom) { // rionde
         throw new Error("TODO");
     }
 
