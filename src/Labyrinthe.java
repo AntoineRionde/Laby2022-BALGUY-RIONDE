@@ -22,7 +22,8 @@ class Labyrinthe{
 
 
     char getChar(int x, int y) { // balguy
-        throw new Error("TODO");
+        char res;
+        switch()
     }
 
 
