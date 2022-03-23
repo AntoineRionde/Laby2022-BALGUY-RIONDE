@@ -47,7 +47,7 @@ class Labyrinthe{
         int[]res;
         switch(action){
           case haut:
-            res[x-1,y];
+            res[]=res[x-1,y];
             break;
 
           case bas :
