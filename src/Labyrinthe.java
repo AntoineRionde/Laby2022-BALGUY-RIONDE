@@ -71,7 +71,12 @@ class Labyrinthe{
 
 
     void deplacerPerso(String action) throws ActionInconnueException { // balguy
-        
+        int []res;
+        while (personnage.getChar(personnage.getX(),personnage.getY())!=MUR) {
+          res =getSuivant(personnage.getX(),personnage.getY(),action);
+        }
+
+
     }
 
 
