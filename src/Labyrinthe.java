@@ -10,10 +10,10 @@ class Labyrinthe{
     private final static char SORTIE = 'S';
     private final static char VIDE = '.';
 
-    private final static String haut = "HAUT";
-    private final static String bas = "BAS";
-    private final static String gauche = "GAUCHE";
-    private final static String droite = "DROITE";
+    private final static String HAUT = "haut";
+    private final static String BAS = "bas";
+    private final static String GAUCHE = "gauche";
+    private final static String DROITE = "droite";
 
     private boolean[][] murs;
     private Personnage personnage;
@@ -22,11 +22,11 @@ class Labyrinthe{
 
     char getChar(int x, int y) { // rionde
         char resp = ' ';
-        if (x == personnage.getX() && y == personnage.getY())
+        if (x == this.personnage.getX() && y == this.personnage.getY())
         {
             resp = PJ;
         }
-        else if (x == sortie.getX() && y == sortie.getY())
+        else if (x == this.sortie.getX() && y == this.sortie.getY())
         {
             resp = SORTIE;
         }
@@ -44,37 +44,28 @@ class Labyrinthe{
 
 
     static int[] getSuivant(int x, int y, String action)throws ActionInconnueException { // balguy
-
+      int [] tab= new int[2];
         switch(action){
-          case haut:
-            while(this.getChar(x,y)==VIDE){
-              personnage.getX()=x-1;
-            }
-
+          case HAUT:
+            tab[0] =x-1;
             break;
 
-          case bas :
-            while(murs[x][y]!=true){
-              res[0]=x+1;
-            }
+          case BAS :
+            tab[0] =x+1;
             break;
 
-          case gauche :
-            while(murs[x][y]!=true){
-                res[1]=y-1;
-            }
+          case GAUCHE :
+            tab[1] =y-1;
             break;
 
-          case droite :
-            while(murs[x][y]!=true){
-              res[1]=y+1;
-            }
-            break;
+          case DROITE :
+            tab[1] =y+1;
+              break;
 
           default:
             throw new ActionInconnueException("le mot :"+action +" ne fait pas partie des 4 actions connues(gauche,droite,haut,bas).");
         }
-        return res;
+        return tab;
     }
 
 
