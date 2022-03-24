@@ -15,9 +15,16 @@ class Labyrinthe{
     private final static String GAUCHE = "gauche";
     private final static String DROITE = "droite";
 
-    private boolean[][] murs;
+    public static boolean[][] murs;
     private Personnage personnage;
     private Sortie sortie;
+
+    public Labyrinthe(boolean[][] m, Personnage p, Sortie s)
+    {
+      this.murs = m;
+      this.personnage = p;
+      this.sortie = s;
+    }
 
 
     char getChar(int x, int y) { // rionde
@@ -82,8 +89,9 @@ class Labyrinthe{
 
     public String toString() { // balguy
       String res = "";
-      for(int i=0;i<murs.length-1;i++){
-        for(int j=0;j<murs[i].length-1;i++){
+      int nbLignes = murs[0].length;
+      for(int i = 0; i < murs.length - 1; i++){
+        for(int j = 0; j < nbLignes; i++){ // ou j < murs[i].length - 1
          // murs[i]= system.out.println();
          res += getChar(i, j);
         }
@@ -96,8 +104,49 @@ class Labyrinthe{
         return (personnage.getX() == sortie.getX() && personnage.getY() == sortie.getY());
     }
 
-    public static Labyrinthe chargerLabyrinthe(String nom) { // rionde
-        throw new Error("TODO");
-    }
+    public static Labyrinthe chargerLabyrinthe(String nom) throws FileNotFoundException, IOException { // rionde
+        BufferedReader fich = new BufferedReader (new FileReader (nom) ) ;
+        String nbLignes = fich.readLine(); 
+        int nbLignesFin = Integer.parseInt(nbLignes);
+        String nbColonnes = fich.readLine();
+        int nbColonnesFin = Integer.parseInt(nbColonnes);
+        Personnage personnage = null;
+        Sortie sortie = null;
+        boolean[][] murs = null;
+        String s = fich.readLine();
+        
+        while (s != null)
+        {
+          for (int i = 0; i < nbLignesFin; i++)
+          {
+            for (int j = 0; j < nbColonnesFin; i++)
+            {
+              if (s.charAt(j) == PJ)
+              {
+                personnage = new Personnage(i, j);
+              }
+              if (s.charAt(j)  == SORTIE)
+              {
+                sortie = new Sortie(i, j);
+              }
+              if (s.charAt(j)  == MUR)
+              {
+                murs[i][j] = true;
+              }
+              if (s.charAt(j) == MUR)
+              {
+                murs[i][j] = false;
+              }
 
+              s = fich.readLine();
+
+          }
+        }
+
+    }
+    Labyrinthe l = new Labyrinthe(murs, personnage, sortie);
+
+    return l; 
+
+}
 }
