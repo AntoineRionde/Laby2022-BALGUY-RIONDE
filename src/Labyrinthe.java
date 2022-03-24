@@ -1,5 +1,5 @@
-//package src;
-//import java.io.*;
+package src;
+import java.io.*;
 /**
  * Squelette de classe labyrinthe
  */
@@ -73,23 +73,23 @@ class Labyrinthe{
     }
 
    
-    void deplacerPerso(String action) throws ActionInconnueException  extends Error { // balguy
+    void deplacerPerso(String action) throws ActionInconnueException { // balguy
         int []res=new int[2];
         while (!this.murs[this.personnage.getX()][this.personnage.getY()]) {
           res =getSuivant(personnage.getX(),personnage.getY(),action);
         }
     }
 
-
-  
-
     public String toString() { // balguy
-      String res;
+      String res = "";
       for(int i=0;i<murs.length-1;i++){
-        for(int j=0;j<murs.length-1;i++){
+        for(int j=0;j<murs[i].length-1;i++){
          // murs[i]= system.out.println();
+         res += getChar(i, j);
         }
+        res += "\n";
       }
+      return res;
     }
 
     public boolean etreFini() { // rionde
