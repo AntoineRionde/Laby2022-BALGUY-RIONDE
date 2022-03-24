@@ -81,6 +81,14 @@ class Labyrinthe{
         throw new Error("TODO");
     }
 
+    public String toString() { // balguy
+      String res;
+      for(int i=0;i<murs.length-1;i++){
+        for(int j=0;j<murs.length-1){
+          murs[i]=
+        }
+      }
+    }
 
     public boolean etreFini() { // rionde
         boolean estFini;
