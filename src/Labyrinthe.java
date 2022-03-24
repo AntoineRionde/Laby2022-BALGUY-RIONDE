@@ -69,16 +69,12 @@ class Labyrinthe{
     }
 
 
-  /*  void deplacerPerso(String action) throws ActionInconnueException { // balguy
-        int []res;
-        while (personnage.getChar(personnage.getX(),personnage.getY())!=MUR ) {
+    void deplacerPerso(String action) throws ActionInconnueException { // balguy
+        int []res=new int[2];
+        while (this.getChar(personnage.getX(),personnage.getY())==VIDE ) {
           res =getSuivant(personnage.getX(),personnage.getY(),action);
         }
-        if(res == ){
-          personnage.etreFini();
-        }
-
-    }*/
+    }
 
 
     public String toString() { // rionde
