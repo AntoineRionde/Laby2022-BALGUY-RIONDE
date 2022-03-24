@@ -39,7 +39,7 @@ class Labyrinthe{
             resp = VIDE;
         }
         return resp;
->>>>>>> ff9c77c34aa5b99b655d485054e8ca12e33fe115
+
     }
 
 
@@ -47,35 +47,44 @@ class Labyrinthe{
         int[]res;
         switch(action){
           case haut:
-            res[]=res[x-1,y];
+            while(personnage.getChar(x,y)!=MUR){
+              res[0]=x-1;
+            }
+
             break;
 
           case bas :
-            res[x+1,y];
+            while(personnage.getChar(x,y)!=MUR){
+              res[0]=x+1;
+            }
             break;
 
           case gauche :
-            res[x,y-1];
+            while(personnage.getChar(x,y)!=MUR){
+                res[1]=y-1;
+            }
             break;
 
           case droite :
-            res[x,y+1];
+            while(personnage.getChar(x,y)!=MUR){
+              res[1]=y+1;
+            }
             break;
 
           default:
-            throw new ActionInconnueException("le mot :"+action +" ne fait pas partie des 4 actions connues.");
+            throw new ActionInconnueException("le mot :"+action +" ne fait pas partie des 4 actions connues(gauche,droite,haut,bas).");
             break;
         }
         return res;
     }
 
 
-    void deplacerPerso(String action) throws ActionInconnueException { // balguy
+  /*  void deplacerPerso(String action) throws ActionInconnueException { // balguy
         int []res;
         while (personnage.getChar(personnage.getX(),personnage.getY())!=MUR) {
           res =getSuivant(personnage.getX(),personnage.getY(),action);
         }
-
+*/
 
     }
 
