@@ -44,12 +44,11 @@ class Labyrinthe{
 
 
     static int[] getSuivant(int x, int y, String action)throws ActionInconnueException { // balguy
-        int[]res;
-        boolean[][]murs;
+
         switch(action){
           case haut:
-            while(murs[x][y]!=true){
-              res[0]=x-1;
+            while(this.getChar(x,y)==VIDE){
+              personnage.getX()=x-1;
             }
 
             break;
