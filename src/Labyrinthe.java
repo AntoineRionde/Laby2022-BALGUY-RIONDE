@@ -1,5 +1,5 @@
-package src;
-import java.io.*;
+//package src;
+//import java.io.*;
 /**
  * Squelette de classe labyrinthe
  */
@@ -48,19 +48,23 @@ class Labyrinthe{
         switch(action){
           case HAUT:
             tab[0] =x-1;
+            tab[1] = y;
             break;
 
           case BAS :
             tab[0] =x+1;
+            tab[1] = y;
             break;
 
           case GAUCHE :
             tab[1] =y-1;
+            tab[0] = x;
             break;
 
           case DROITE :
             tab[1] =y+1;
-              break;
+            tab[0] = x;
+            break;
 
           default:
             throw new ActionInconnueException("le mot :"+action +" ne fait pas partie des 4 actions connues(gauche,droite,haut,bas).");
@@ -68,39 +72,28 @@ class Labyrinthe{
         return tab;
     }
 
-
-    void deplacerPerso(String action) throws ActionInconnueException { // balguy
+   
+    void deplacerPerso(String action) throws ActionInconnueException  extends Error { // balguy
         int []res=new int[2];
-        while (this.getChar(personnage.getX(),personnage.getY())==VIDE ) {
+        while (!this.murs[this.personnage.getX()][this.personnage.getY()]) {
           res =getSuivant(personnage.getX(),personnage.getY(),action);
         }
     }
 
 
-    public String toString() { // rionde
-        throw new Error("TODO");
-    }
+  
 
     public String toString() { // balguy
       String res;
       for(int i=0;i<murs.length-1;i++){
-        for(int j=0;j<murs.length-1){
-          murs[i]=
+        for(int j=0;j<murs.length-1;i++){
+         // murs[i]= system.out.println();
         }
       }
     }
 
     public boolean etreFini() { // rionde
-        boolean estFini;
-        if (personnage.getX() == sortie.getX() && personnage.getY() == sortie.getY())
-        {
-            estFini = true;
-        }
-        else
-        {
-            estFini = false;
-        }
-        return estFini;
+        return (personnage.getX() == sortie.getX() && personnage.getY() == sortie.getY());
     }
 
     public static Labyrinthe chargerLabyrinthe(String nom) { // rionde
