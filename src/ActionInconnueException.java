@@ -1,5 +1,7 @@
+package src;
+
 public class ActionInconnueException extends Exception{
-  public ActionInconnueException(){
-    super();
+  public ActionInconnueException(String erreur){
+    super(erreur);
   }
 }

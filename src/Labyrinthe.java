@@ -45,35 +45,35 @@ class Labyrinthe{
 
     static int[] getSuivant(int x, int y, String action)throws ActionInconnueException { // balguy
         int[]res;
+        boolean[][]murs;
         switch(action){
           case haut:
-            while(personnage.getChar(x,y)!=MUR){
+            while(murs[x][y]!=true){
               res[0]=x-1;
             }
 
             break;
 
           case bas :
-            while(personnage.getChar(x,y)!=MUR){
+            while(murs[x][y]!=true){
               res[0]=x+1;
             }
             break;
 
           case gauche :
-            while(personnage.getChar(x,y)!=MUR){
+            while(murs[x][y]!=true){
                 res[1]=y-1;
             }
             break;
 
           case droite :
-            while(personnage.getChar(x,y)!=MUR){
+            while(murs[x][y]!=true){
               res[1]=y+1;
             }
             break;
 
           default:
             throw new ActionInconnueException("le mot :"+action +" ne fait pas partie des 4 actions connues(gauche,droite,haut,bas).");
-            break;
         }
         return res;
     }
@@ -81,12 +81,14 @@ class Labyrinthe{
 
   /*  void deplacerPerso(String action) throws ActionInconnueException { // balguy
         int []res;
-        while (personnage.getChar(personnage.getX(),personnage.getY())!=MUR) {
+        while (personnage.getChar(personnage.getX(),personnage.getY())!=MUR ) {
           res =getSuivant(personnage.getX(),personnage.getY(),action);
         }
-*/
+        if(res == ){
+          personnage.etreFini();
+        }
 
-    }
+    }*/
 
 
     public String toString() { // rionde
