@@ -3,17 +3,17 @@ import java.io.*;
 /**
  * Squelette de classe labyrinthe
  */
-class Labyrinthe{
+public class Labyrinthe{
 
-    private final static char MUR = 'X';
-    private final static char PJ = 'P';
-    private final static char SORTIE = 'S';
-    private final static char VIDE = '.';
+    public final static char MUR = 'X';
+    public final static char PJ = 'P';
+    public final static char SORTIE = 'S';
+    public final static char VIDE = '.';
 
-    private final static String HAUT = "haut";
-    private final static String BAS = "bas";
-    private final static String GAUCHE = "gauche";
-    private final static String DROITE = "droite";
+    public final static String HAUT = "haut";
+    public final static String BAS = "bas";
+    public final static String GAUCHE = "gauche";
+    public final static String DROITE = "droite";
 
     public static boolean[][] murs;
     private Personnage personnage;
@@ -27,7 +27,7 @@ class Labyrinthe{
     }
 
 
-    char getChar(int x, int y) { // rionde
+    public char getChar(int x, int y) { // rionde
         char resp = ' ';
         if (x == this.personnage.getX() && y == this.personnage.getY())
         {
@@ -50,7 +50,7 @@ class Labyrinthe{
     }
 
 
-    static int[] getSuivant(int x, int y, String action)throws ActionInconnueException { // balguy
+    public static int[] getSuivant(int x, int y, String action)throws ActionInconnueException { // balguy
       int [] tab= new int[2];
         switch(action){
           case HAUT:
@@ -80,7 +80,7 @@ class Labyrinthe{
     }
 
    
-    void deplacerPerso(String action) throws ActionInconnueException { // balguy
+    public void deplacerPerso(String action) throws ActionInconnueException { // balguy
         int []res=new int[2];
         while (!this.murs[this.personnage.getX()][this.personnage.getY()]) {
           res =getSuivant(personnage.getX(),personnage.getY(),action);
