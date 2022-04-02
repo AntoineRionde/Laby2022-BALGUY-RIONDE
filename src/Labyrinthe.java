@@ -124,11 +124,11 @@ public class Labyrinthe{
              if (s == 'X') {
                  murs[nbLignesCourant][nbColonnesCourant] = true;
              }
-             else
+             else if (s == '.') 
              {
                  murs[i][j] = false;
              }
-             if (s == 'P') {
+             else if (s == 'P') {
                  personnage = new Personnage(nbLignesCourant, nbColonnesCourant);
              }
              else if (s == 'S') {
