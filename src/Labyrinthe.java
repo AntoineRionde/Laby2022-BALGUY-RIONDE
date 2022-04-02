@@ -119,14 +119,14 @@ public class Labyrinthe{
         int nbColonnesCourant = 0;
         char s = (char) fich.read();
         
-        while (fich.read() != -1)
+        while (s != -1)
         {
              if (s == 'X') {
                  murs[nbLignesCourant][nbColonnesCourant] = true;
              }
-             else if (s == '.') 
+             else if (s == '.')
              {
-                 murs[i][j] = false;
+                 murs[nbLignesCourant][nbColonnesCourant] = false;
              }
              else if (s == 'P') {
                  personnage = new Personnage(nbLignesCourant, nbColonnesCourant);
@@ -134,10 +134,12 @@ public class Labyrinthe{
              else if (s == 'S') {
                  sortie = new Sortie(nbLignesCourant, nbColonnesCourant);
              }
-             else if (s == '\n') {
+             if (s == '\n') {
                  nbLignesCourant++;
+                 nbColonnesCourant = 0;
              }
             nbColonnesCourant++;
+             s = (char) fich.read();
              }
 
         Labyrinthe l = new Labyrinthe(murs, personnage, sortie);
