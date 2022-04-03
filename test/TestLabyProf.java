@@ -2,6 +2,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
+import src.Labyrinthe;
+
 /**
  * classe de test fournie destinee a verifier les methodes
  */
