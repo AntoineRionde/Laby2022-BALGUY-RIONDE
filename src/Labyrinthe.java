@@ -105,25 +105,25 @@ public class Labyrinthe{
     }
 
     public static Labyrinthe chargerLabyrinthe(String nom) throws FileNotFoundException, IOException { // rionde
-        BufferedReader fich = new BufferedReader (new FileReader (nom) ) ;
-        String nbLignes = fich.readLine(); 
-        int nbLignesFin = Integer.parseInt(nbLignes);
-        String nbColonnes = fich.readLine();
-        int nbColonnesFin = Integer.parseInt(nbColonnes);
+        BufferedReader fich = new BufferedReader (new FileReader(nom));
+
+        int nbLignes = Integer.parseInt(fich.readLine());
+        int nbColonnes = Integer.parseInt(fich.readLine());
+
         Personnage personnage = null;
         Sortie sortie = null;
         boolean[][] murs = null;
-        int nbLignesCourant = 0;
-        int nbColonnesCourant = 0;
+
         String ligne = fich.readLine();
 
-        for (int i = 0; i < nbLignesFin; i++) {
-            for (int j = 0; j < nbColonnesFin; j++) {
+        for (int i = 0; i < nbLignes; i++) {
+            for (int j = 0; j < nbColonnes; j++)
+            {
                 if (ligne.charAt(j) == 'P') {
                     personnage = new Personnage(i, j);
                 }
                 if (ligne.charAt(j) == 'S') {
-                sortie = new Sortie(i, j);
+                    sortie = new Sortie(i, j);
                 }
                 if (ligne.charAt(j) == 'X') {
                     murs[i][j] = true;
@@ -131,12 +131,9 @@ public class Labyrinthe{
                 if (ligne.charAt(j) == '.') {
                     murs[i][j] = false;
                 }
-
             }
             ligne = fich.readLine();
         }
-
-
 
         Labyrinthe l = new Labyrinthe(murs, personnage, sortie);
         return l;
