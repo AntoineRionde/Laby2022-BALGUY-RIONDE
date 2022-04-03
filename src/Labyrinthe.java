@@ -113,34 +113,30 @@ public class Labyrinthe{
         Personnage personnage = null;
         Sortie sortie = null;
         boolean[][] murs = null;
-        int i = 0;
-        int j = 0;
         int nbLignesCourant = 0;
         int nbColonnesCourant = 0;
-        char s = (char) fich.read();
-        
-        while (s != -1)
-        {
-             if (s == 'X') {
-                 murs[nbLignesCourant][nbColonnesCourant] = true;
-             }
-             else if (s == '.')
-             {
-                 murs[nbLignesCourant][nbColonnesCourant] = false;
-             }
-             else if (s == 'P') {
-                 personnage = new Personnage(nbLignesCourant, nbColonnesCourant);
-             }
-             else if (s == 'S') {
-                 sortie = new Sortie(nbLignesCourant, nbColonnesCourant);
-             }
-             if (s == '\n') {
-                 nbLignesCourant++;
-                 nbColonnesCourant = 0;
-             }
-            nbColonnesCourant++;
-             s = (char) fich.read();
-             }
+        String ligne = fich.readLine();
+
+        for (int i = 0; i < nbLignesFin; i++) {
+            for (int j = 0; j < nbColonnesFin; j++) {
+                if (ligne.charAt(j) == 'P') {
+                    personnage = new Personnage(i, j);
+                }
+                if (ligne.charAt(j) == 'S') {
+                sortie = new Sortie(i, j);
+                }
+                if (ligne.charAt(j) == 'X') {
+                    murs[i][j] = true;
+                }
+                if (ligne.charAt(j) == '.') {
+                    murs[i][j] = false;
+                }
+
+            }
+            ligne = fich.readLine();
+        }
+
+
 
         Labyrinthe l = new Labyrinthe(murs, personnage, sortie);
         return l;
