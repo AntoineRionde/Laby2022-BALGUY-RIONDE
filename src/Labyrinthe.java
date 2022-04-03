@@ -112,7 +112,7 @@ public class Labyrinthe{
 
         Personnage personnage = null;
         Sortie sortie = null;
-        boolean[][] murs = null;
+        boolean[][] murs = new boolean[nbLignes][nbColonnes];
 
         String ligne = fich.readLine();
 
