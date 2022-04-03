@@ -53,4 +53,53 @@ public class TestLabyProf {
         String s = l.toString();
     }
 
+    @Test
+    public void test_toString() throws Exception{
+        // utilise laby0.txt fourni
+        Labyrinthe l = Labyrinthe.chargerLabyrinthe("laby/laby0.txt");
+
+
+        // toString
+        String s = l.toString();
+
+        assertEquals("5\n7\nXXXXXXX\nXS....X\nX..P..X\nX.....X\nXXXXXXX", s, "erreur");
+    }
+
+    @Test
+    public void test_etreFini1() throws Exception {
+        // utilise laby0.txt fourni
+        Labyrinthe l = Labyrinthe.chargerLabyrinthe("laby/laby0.txt");
+
+
+        // etrefini
+        boolean b = l.etreFini();
+
+        assertEquals(false, b, "erreur");
+    }
+
+    @Test
+    public void test_getSuivant() throws Exception {
+        // utilise laby0.txt fourni
+        Labyrinthe l = Labyrinthe.chargerLabyrinthe("laby/laby0.txt");
+
+        // getsuivant et constantes action
+        int[] res;
+        //res = Labyrinthe.getSuivant(1,1,Labyrinthe.HAUT);
+        res = Labyrinthe.getSuivant(1,1,Labyrinthe.BAS);
+        //res = Labyrinthe.getSuivant(1,1,Labyrinthe.DROITE);
+        //res = Labyrinthe.getSuivant(1,1,Labyrinthe.GAUCHE);
+
+
+
+        int[] resAttGauche = new int[] {1, 0}; // gauche
+        int[] resAttHaut = {0, 1}; // haut
+        int[] resAttDroite = {1, 2}; // droite
+        int[] resAttBas = {2, 1}; // bas
+
+        //assertEquals(resAttGauche[0], res[0], "erreur");
+        assertEquals(resAttBas[0], res[0], "erreur");
+        //assertEquals(resAttDroite[0], res[2], "erreur");
+        //assertEquals(resAttHaut[0], res[3], "erreur");
+
+    }
 }
