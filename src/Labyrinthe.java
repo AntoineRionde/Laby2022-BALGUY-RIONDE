@@ -3,7 +3,7 @@ import java.io.*;
 /**
  * Squelette de classe labyrinthe
  */
-public class Labyrinthe{
+public class Labyrinthe {
 
     public final static char MUR = 'X';
     public final static char PJ = 'P';
@@ -27,7 +27,7 @@ public class Labyrinthe{
     }
 
 
-    public char getChar(int x, int y) { // rionde
+    public char getChar(int x, int y) {
         char resp = ' ';
         if (x == this.personnage.getX() && y == this.personnage.getY())
         {
@@ -80,14 +80,16 @@ public class Labyrinthe{
     }
 
    
-    public void deplacerPerso(String action) throws ActionInconnueException { // balguy
-        int []res=new int[2];
-        while (!this.murs[this.personnage.getX()][this.personnage.getY()]) {
-          res =getSuivant(personnage.getX(),personnage.getY(),action);
+    public void deplacerPerso(String action) throws ActionInconnueException { // methode a corriger
+        int[] res = new int[2];
+        while (!(this.murs[this.personnage.getX()][this.personnage.getY()])){
+          res = getSuivant(personnage.getX(),personnage.getY(),action);
         }
+        this.personnage.setX(res[0]);
+        this.personnage.setY(res[1]);
     }
 
-    public String toString() { // balguy
+    public String toString() { // non fonctionnel
       String res = "";
       int nbLignes = murs[0].length;
       for(int i = 0; i < murs.length - 1; i++){
@@ -104,7 +106,7 @@ public class Labyrinthe{
         return (personnage.getX() == sortie.getX() && personnage.getY() == sortie.getY());
     }
 
-    public static Labyrinthe chargerLabyrinthe(String nom) throws FileNotFoundException, IOException { // rionde
+    public static Labyrinthe chargerLabyrinthe(String nom) throws FileNotFoundException, IOException {
         BufferedReader fich = new BufferedReader (new FileReader(nom));
 
         int nbLignes = Integer.parseInt(fich.readLine());
