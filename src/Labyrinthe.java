@@ -80,7 +80,7 @@ public class Labyrinthe {
     }
 
    
-    public void deplacerPerso(String action) throws ActionInconnueException { 
+    public void deplacerPerso(String action) throws ActionInconnueException {
         int[] res = new int[2];
         res = getSuivant(personnage.getX(),personnage.getY(),action);
         while (!(this.murs[res[0]][res[1]])) {
