@@ -1,5 +1,6 @@
 package src;
 import java.io.*;
+
 /**
  * Squelette de classe labyrinthe
  */
@@ -46,11 +47,10 @@ public class Labyrinthe {
             resp = VIDE;
         }
         return resp;
-
     }
 
 
-    public static int[] getSuivant(int x, int y, String action)throws ActionInconnueException { // balguy
+    public static int[] getSuivant(int x, int y, String action)throws ActionInconnueException {
       int [] tab= new int[2];
         switch(action){
           case HAUT:
@@ -81,22 +81,27 @@ public class Labyrinthe {
 
    
     public void deplacerPerso(String action) throws ActionInconnueException {
-        int[] res = new int[2];
-        res = getSuivant(personnage.getX(),personnage.getY(),action);
-        while (!(this.murs[res[0]][res[1]])) {
-            this.personnage.setX(res[0]);
-            this.personnage.setY(res[1]);
+
+        try {
+            int[] res = new int[2];
             res = getSuivant(personnage.getX(),personnage.getY(),action);
+            while (!(this.murs[res[0]][res[1]])) {
+                this.personnage.setX(res[0]);
+                this.personnage.setY(res[1]);
+                res = getSuivant(personnage.getX(),personnage.getY(),action);
+            }
+        }
+        catch (ActionInconnueException e) {
+            throw new ActionInconnueException("le mot :"+action +" ne fait pas partie des 4 actions connues(gauche,droite,haut,bas).");
         }
 
     }
 
-    public String toString() { // non fonctionnel
+    public String toString() {
       String res = "";
       int nbLignes = murs[0].length;
       for(int i = 0; i < murs.length - 1; i++){
-        for(int j = 0; j < nbLignes; i++){ // ou j < murs[i].length - 1
-         // murs[i]= system.out.println();
+        for(int j = 0; j < nbLignes; i++){
          res += getChar(i, j);
         }
         res += "\n";
@@ -104,7 +109,7 @@ public class Labyrinthe {
       return res;
     }
 
-    public boolean etreFini() { // rionde
+    public boolean etreFini() {
         return (personnage.getX() == sortie.getX() && personnage.getY() == sortie.getY());
     }
 
