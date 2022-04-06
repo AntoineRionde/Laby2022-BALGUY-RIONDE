@@ -80,13 +80,15 @@ public class Labyrinthe {
     }
 
    
-    public void deplacerPerso(String action) throws ActionInconnueException { // methode a corriger
+    public void deplacerPerso(String action) throws ActionInconnueException { 
         int[] res = new int[2];
-        while (!(this.murs[this.personnage.getX()][this.personnage.getY()])){
-          res = getSuivant(personnage.getX(),personnage.getY(),action);
+        res = getSuivant(personnage.getX(),personnage.getY(),action);
+        while (!(this.murs[res[0]][res[1]])) {
+            this.personnage.setX(res[0]);
+            this.personnage.setY(res[1]);
+            res = getSuivant(personnage.getX(),personnage.getY(),action);
         }
-        this.personnage.setX(res[0]);
-        this.personnage.setY(res[1]);
+
     }
 
     public String toString() { // non fonctionnel
